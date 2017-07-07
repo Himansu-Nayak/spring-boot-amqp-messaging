@@ -1,7 +1,7 @@
 package com.org.amqp.rabbit.sender;
 
+import com.org.amqp.rabbit.configuration.RabbitMQConfiguration;
 import com.org.amqp.rabbit.message.Message;
-import com.org.amqp.rabbit.MessagingApplication;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
@@ -27,6 +27,6 @@ public class Sender {
     public void sendMessage() {
         final Message message = new Message("Hello there!", new Random().nextInt(50), false);
         log.info("Sending message...");
-        rabbitTemplate.convertAndSend(MessagingApplication.EXCHANGE_NAME, MessagingApplication.ROUTING_KEY, message);
+        rabbitTemplate.convertAndSend(RabbitMQConfiguration.EXCHANGE_NAME, RabbitMQConfiguration.ROUTING_KEY, message);
     }
 }
