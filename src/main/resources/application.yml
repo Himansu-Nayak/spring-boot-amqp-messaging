@@ -1,0 +1,8 @@
+rabbitmq:
+  host:
+  port:
+  username:
+  password:
+  exchange:
+    name: appExchange
+    binding-key: messages.key
