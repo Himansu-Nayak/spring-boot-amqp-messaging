@@ -1,0 +1,21 @@
+spring:
+  profiles.active: dev
+  rabbitmq:
+    host: ${RABBITMQ_HOST:localhost}
+    port: ${RABBITMQ_PORT:5672}
+    username: ${RABBITMQ_USERNAME:guest}
+    password: ${RABBITMQ_PASSWORD:guest}
+
+messaging:
+  exchange:
+    bridge: bridge.topic
+    tenant: tenant.topic
+    inspection: inspection.topic
+  queue:
+    bridge: inspection.bridge.event
+    tenant: inspection.tenant.event
+    inspection: inspection.event
+  routing-key:
+    bridge: jci.tofs.bridge.event.panel.#
+    tenant: jci.tofs.tenant.event.panel.#
+    inspection: jci.tofs.inspection.event.#

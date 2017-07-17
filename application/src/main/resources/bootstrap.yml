@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: spring-boot-amqp-messaging
+  profiles:
+    active: ${ACTIVE_PROFILE:dev}
+---
+spring:
+  profiles: dev
+  cloud:
+    config:
+      enabled: false
+    consul:
+      enabled: false
