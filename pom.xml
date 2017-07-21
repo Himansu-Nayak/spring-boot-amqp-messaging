@@ -45,6 +45,11 @@
         </dependency>
 
         <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
@@ -55,7 +60,7 @@
         <module>messaging</module>
         <module>application</module>
         <module>configuration</module>
-        <module>war</module>
+        <module>domain</module>
     </modules>
 
 </project>

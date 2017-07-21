@@ -1,4 +1,4 @@
-package com.org.spring.boot.amqp.processor.bridge;
+package com.org.spring.boot.amqp.processor.tenant;
 
 import com.org.spring.boot.amqp.message.PointsMessageData;
 import com.org.spring.boot.amqp.processor.Event;
@@ -8,11 +8,9 @@ import org.springframework.stereotype.Service;
 
 @Slf4j
 @Service
-public class PointsStatusProcessor extends Processor<PointsMessageData> {
+public class PointsProcessor extends Processor<PointsMessageData> {
 
-    public PointsStatusProcessor() {
-        super(PointsMessageData.class);
-    }
+    public PointsProcessor() {super(PointsMessageData.class);}
 
     @Override
     public void process(final String message) {
@@ -21,7 +19,7 @@ public class PointsStatusProcessor extends Processor<PointsMessageData> {
 
     @Override
     protected Event buildEvent(final PointsMessageData pointsMessageData) {
-        return new Event("device.panel.points.status", pointsMessageData.getSerial());
+        return new Event("device.points.status", pointsMessageData.getSerial());
     }
 
 }

@@ -13,6 +13,7 @@
 
     <properties>
         <jackson.mapper.asl.version>1.8.5</jackson.mapper.asl.version>
+        <jayway.json.path>2.9.0</jayway.json.path>
     </properties>
 
     <dependencies>
@@ -35,7 +36,12 @@
         <dependency>
             <groupId>com.jayway.restassured</groupId>
             <artifactId>json-path</artifactId>
-            <version>2.9.0</version>
+            <version>${jayway.json.path}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.org.spring.boot.amqp</groupId>
+            <artifactId>domain</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
         </dependency>
     </dependencies>
 </project>

@@ -6,16 +6,20 @@ spring:
     username: ${RABBITMQ_USERNAME:guest}
     password: ${RABBITMQ_PASSWORD:guest}
 
-messaging:
-  exchange:
-    bridge: bridge.topic
-    tenant: tenant.topic
-    inspection: inspection.topic
-  queue:
-    bridge: inspection.bridge.event
-    tenant: inspection.tenant.event
-    inspection: inspection.event
-  routing-key:
-    bridge: jci.tofs.bridge.event.panel.#
-    tenant: jci.tofs.tenant.event.panel.#
-    inspection: jci.tofs.inspection.event.#
+tenant:
+  messaging:
+      exchange: tenant.topic
+      queue: inspection.tenant.event
+      routing-key: jci.tofs.tenant.event.panel.#
+
+bridge:
+  messaging:
+    exchange: bridge.topic
+    queue: inspection.bridge.event
+    routing-key: jci.tofs.bridge.event.panel.#
+
+inspection:
+  messaging:
+    exchange: inspection.topic
+    queue: inspection.event
+    routing-key: jci.tofs.inspection.event.panel.#

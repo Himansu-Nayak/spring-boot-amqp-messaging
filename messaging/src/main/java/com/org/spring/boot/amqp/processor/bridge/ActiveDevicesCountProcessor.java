@@ -1,31 +1,27 @@
 package com.org.spring.boot.amqp.processor.bridge;
 
-import com.org.spring.boot.amqp.message.Message;
-import com.org.spring.boot.amqp.message.bridge.devices.ActiveDevicesCount;
+import com.org.spring.boot.amqp.message.devices.ActiveDevicesCountMessageData;
+import com.org.spring.boot.amqp.processor.Event;
 import com.org.spring.boot.amqp.processor.Processor;
 import lombok.extern.slf4j.Slf4j;
-import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.stereotype.Service;
-
-import java.io.IOException;
 
 @Slf4j
 @Service
-public class ActiveDevicesCountProcessor extends Processor {
+public class ActiveDevicesCountProcessor extends Processor<ActiveDevicesCountMessageData> {
 
-    public void processMessage(final Message message) {
-        ActiveDevicesCount activeDevicesCount = (ActiveDevicesCount) message;
-        System.out.println(activeDevicesCount);
-        String jsonMessage = null;
-        try {
-            if (activeDevicesCount != null) {
-                activeDevicesCount.getData().setSource("Inspection Service");
-                jsonMessage = new ObjectMapper().writeValueAsString(activeDevicesCount);
-            }
-        } catch (final IOException ioException) {
-            log.error("Exception during parsing active devices count ", ioException);
-        }
-        inspectionMessagePublisher.sendMessage(jsonMessage);
+    public ActiveDevicesCountProcessor() {
+        super(ActiveDevicesCountMessageData.class);
+    }
+
+    @Override
+    public void process(final String message) {
+        super.process(message);
+    }
+
+    @Override
+    protected Event buildEvent(final ActiveDevicesCountMessageData activeDevicesCountMessageData) {
+        return new Event("device.active.count", activeDevicesCountMessageData.getSerial());
     }
 
 }
