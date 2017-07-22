@@ -11,10 +11,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 public abstract class MessagingConsumerConfiguration {
 
     @Autowired
-    protected ProcessorAdapter processorAdapter;
+    protected CachingConnectionFactory connectionFactory;
 
     @Autowired
-    protected CachingConnectionFactory connectionFactory;
+    protected ProcessorAdapter processorAdapter;
 
     protected abstract String queue();
 
