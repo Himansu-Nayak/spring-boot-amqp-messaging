@@ -34,7 +34,6 @@ public class BridgeSender {
     @Value("${tenant.messaging.exchange}")
     private String tenantExchange;
 
-    @Scheduled(fixedDelay = 10000L)
     public void sendMessage() {
         final MessageProperties messageProperties = new MessageProperties();
         messageProperties.setTimestamp(new Date());
